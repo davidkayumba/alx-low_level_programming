@@ -1,20 +1,20 @@
 #include <stdio.h>
+#include <stdio.h>
+#include <time.h>
 
 /**
- * main - Prints all possible combinations of single-digit numbers.
- *
- * Return: Always 0.
+ * main - Prints all possible combinations of single-digit numbers
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int num;
+	int a;
 
-	for (num = 0; num <= 9; num++)
+	for (a = 0; a <= 9; a++)
 	{
-		putchar((num % 10) + '0');
-		if (num == 9)
+		putchar((a % 10) + '0');
+		if (a == 9)
 			continue;
-		
 		putchar(',');
 		putchar(' ');
 	}
