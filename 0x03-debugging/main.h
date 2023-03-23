@@ -1,9 +1,15 @@
-#ifndef MAIN_H
-#define MAIN_H
+#include "main.h"
+/**
+* main - Test function for positive or negative
+* Return: 0
+*/
+int main(void)
+{
+int i;
 
-void postitive_or_negative(int 1);
-int lagest_number(int a, int b, int c);
-int correct_day(int month; int day);
-void print_remaining_day(int month, int day, int year);
+i = 0;
 
-#endif /* MAIN_H */
+positive_or_negative(i);
+
+return (0);
+}
