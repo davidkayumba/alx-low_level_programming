@@ -1,38 +1,37 @@
 #include "main.h"
 /**
- * helpingfunct - function helping in recursion
- * @num: The nuber to be squaretooted
- * @a:squareroot to be checked
- * Return: a as squareroot
+ * helpingfunct - function to help in recursion
+ * @num: the number to be checked
+ * @a: the number for modulus operation
+ * Return: 1/0 dipending on prime or non prime
  */
 int helpingfunct(int num, int a)
 {
-	if ((a * a) == num)
+	if (num > a)
 	{
-		return (a);
+		if (num % a == 0)
+		{
+			return (0);
+		}
+		else
+		{
+			return (helpingfunct(num, a + 1));
+		}
 	}
 	else
-	{
-		if ((a * a) > num)
-			return (-1);
-		else
-			return (helpingfunct(num, a + 1));
-	}
-
+		return (1);
 }
 /**
- * _sqrt_recursion - function to find sqrt of a number recursing
- * @n: number to be squarerooted
- * Return: Integer Square root
+ * is_prime_number - function to checkprime number
+ * @n: the input number
+ * Return: 0 for no prime and 1 for prime numbers
  */
-int _sqrt_recursion(int n)
+int is_prime_number(int n)
 {
-if (n < 0)
-{
-	return (-1);
-}
-else
-{
-	return (helpingfunct(n, 0));
-}
+	if (n <= 1)
+	{
+		return (0);
+	}
+	else
+		return (helpingfunct(n, 2));
 }
