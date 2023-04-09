@@ -1,10 +1,14 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
-
+/**
+ *_puts - function for outting a character on a line
+ *@s: the characher to be added
+ *Reurn: Nothing
+ */
 void _puts(char *s)
 {
-    puts(s)
+while (*s != '\0')
+{
+	_putchar(*s++);
+}
+_putchar('\n');
 }
