@@ -1,1 +1,1 @@
-0x05-pinters_arrays_string
+0x06. C - More pointers, arrays and strings
