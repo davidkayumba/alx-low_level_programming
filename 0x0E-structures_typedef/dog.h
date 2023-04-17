@@ -3,7 +3,7 @@
 
 /**
  * struct dog - dog structure
- *
+ * @d: the dog to be initialized.
  * @name: Name of a dog
  * @age: Age of a dog
  * @owner: Dog's owner
@@ -12,12 +12,12 @@
 struct dog
 {
 	char *name;
-	char *owner;
 	float age;
+	char *owner;
 };
-void int_dog(struct *d, char *name, char *owner, float age);
+void init_dog(struct dog *d, char *name, float age, char *owner);
 void print_dog(struct dog *d);
-dog_t *new_dog(char *name, char *owner, float age);
-void free_dog(dod_t *d);
+dog_t *new_dog(char *name, float age, char *owner);
+void print_dog(struct dog *d);
 
 #endif
