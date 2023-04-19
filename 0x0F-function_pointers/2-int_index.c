@@ -6,7 +6,7 @@
  * @size: Is the number of elements
  * @cmp: is a pointer a function
  *
- * Return: 0 (success)
+ * Return: the index of the first element for which the cmp function does not return
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
