@@ -10,7 +10,7 @@ void print_dog(struct dog *d)
 {
 	if (d == NULL)
 	{
-		printf("NULL pointer passed to print_dog()\n");
+		printf("NULL pointer\n");
 		return;
 	}
 
