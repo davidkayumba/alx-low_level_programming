@@ -4,7 +4,7 @@
 
 /**
  * print_all - prints anything
- * @format: Is a list of types of arguments passed to the function
+ * @format: list of types of arguments passed to the function
  *
  */
 void print_all(const char * const format, ...)
@@ -41,6 +41,7 @@ void print_all(const char * const format, ...)
 					continue;
 			}
 			sep = ", ";
+			i++;
 		}
 	}
 	printf("\n");
