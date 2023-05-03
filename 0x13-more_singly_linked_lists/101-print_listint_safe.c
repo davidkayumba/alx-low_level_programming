@@ -1,27 +1,47 @@
+#include <stdlib.h>
 #include "lists.h"
-
+#include <stdio.h>
+size_t looped_listint_len(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 /**
- * free_listp - freess a linked list
- * @head: head of a list
- *
- * Return: no return
+ * looped_listint_len - function to print the linked list
+ * @head: the pointer to the head
+ * Return: the number of node printed
  */
-void free_listint(listint_t *head)
+size_t looped_listint_len(const listint_t *head)
 {
-	listint_t *temp;
-	listint_t *curr;
+	const listint_t *slow, *fast;
+	size_t num = 1;
 
-	if (head != NULL)
+	if (head == NULL || head->next == NULL)
+		return (0);
+	slow = head->next;
+	fast = (head->next)->next;
+
+	while (fast)
 	{
-		curr = *head;
-
-		while ((temp = curr) != NULL)
+		if (slow == fast)
 		{
-			curr = curr->next;
-			free(temp);
+			slow = head;
+			while (slow != fast)
+			{
+				num++;
+				slow = slow->next;
+				fast = fast->next;
+			}
+			slow = slow->next;
+
+			while (slow != fast)
+			{
+				num++;
+				slow = slow->next;
+			}
+			return (num);
 		}
-		*head = NULL;
+		slow = slow->next;
+		fast = (fast->next)->next;
 	}
+	return (0);
 }
 /**
  * print_listint_safe - print a linked list
@@ -31,35 +51,26 @@ void free_listint(listint_t *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t nnodes = 0;
+	size_t node, index = 0;
 
-	listint_t *hptr, *new, *add;
+	node  = looped_listint_len(head);
 
-	hptr = NULL;
-
-	while (head != NULL)
+	if (node == 0)
 	{
-		new = malloc(sizeof(listint_t));
-		if (new == NULL)
-			exit(98);
-		new->p = (void *)head;
-		new->next = hptr;
-		hptr = new;
-		add = hptr;
-		while (add->next != NULL)
+		for (; head != NULL; node++)
 		{
-			add = add->next;
-			if (head == add->p)
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				free_listint(&hptr);
-				return (nnodes);
-			}
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
 		}
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-		nnodes++;
 	}
-	free_listint(&hptr);
-	return (nnodes);
+	else
+	{
+		for (index = 0; index < node; index++)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+		}
+		printf("->[%p] %d\n", (void *)head, head->n);
+	}
+	return (node);
 }
